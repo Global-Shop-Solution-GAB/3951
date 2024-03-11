@@ -1,0 +1,675 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Extended Status Part with Cutoff Date")
+gui.SS_Form1..size(6160,5825)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1.lbl_dtp1_Cutoff.create(label,"Cutoff Date",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtp1_Cutoff.create(datepicker)
+gui.SS_Form1.dtp1_Cutoff.visible(True)
+gui.SS_Form1.dtp1_Cutoff.size(1800,345)
+gui.SS_Form1.dtp1_Cutoff.position(100,335)
+gui.SS_Form1.dtp1_Cutoff.enabled(True)
+gui.SS_Form1.dtp1_Cutoff.fontname("Arial")
+gui.SS_Form1.lbl_dtp1_Cutoff.LabelStretch(True)
+gui.SS_Form1.lbl_dtp1_Cutoff.setinternationalid(156600)
+gui.SS_Form1.lbl_txt1_BegPart.create(label,"Beginning Part Number",True,1800,200,1,100,765,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txt1_BegPart.LabelStretch(True)
+gui.SS_Form1.lbl_txt1_BegPart.setinternationalid(62400)
+gui.SS_Form1.txt1_BegPart.create(textbox,"",True,1800,330,1,100,965,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txt1_BegPart.event(gotfocus,txt1_begpart_gotfocus)
+gui.SS_Form1.txt1_BegPart.event(lostfocus,txt1_begpart_lostfocus)
+Gui.SS_Form1.cmd_txt1_BegPart.create(button)
+gui.SS_Form1.cmd_txt1_BegPart.Caption("^")
+gui.SS_Form1.cmd_txt1_BegPart.visible(True)
+gui.SS_Form1.cmd_txt1_BegPart.size(330,330)
+gui.SS_Form1.cmd_txt1_BegPart.position(1985,965)
+gui.SS_Form1.cmd_txt1_BegPart.enabled(True)
+gui.SS_Form1.cmd_txt1_BegPart.fontname("Arial")
+gui.SS_Form1.cmd_txt1_BegPart.fontsize(8)
+gui.SS_Form1.cmd_txt1_BegPart.event(click,cmd_txt1_begpart_click)
+gui.SS_Form1.lbl_txt2_EndPart.create(label,"Ending Part Number",True,1800,200,1,2455,765,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txt2_EndPart.LabelStretch(True)
+gui.SS_Form1.lbl_txt2_EndPart.setinternationalid(215002)
+gui.SS_Form1.txt2_EndPart.create(textbox,"",True,1800,330,1,2455,965,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txt2_EndPart.event(gotfocus,txt2_endpart_gotfocus)
+Gui.SS_Form1.cmd_txt2_EndPart.create(button)
+gui.SS_Form1.cmd_txt2_EndPart.Caption("^")
+gui.SS_Form1.cmd_txt2_EndPart.visible(True)
+gui.SS_Form1.cmd_txt2_EndPart.size(330,330)
+gui.SS_Form1.cmd_txt2_EndPart.position(4340,965)
+gui.SS_Form1.cmd_txt2_EndPart.enabled(True)
+gui.SS_Form1.cmd_txt2_EndPart.fontname("Arial")
+gui.SS_Form1.cmd_txt2_EndPart.fontsize(8)
+gui.SS_Form1.cmd_txt2_EndPart.event(click,cmd_txt2_endpart_click)
+gui.SS_Form1.chk2_AllParts.create(checkbox)
+gui.SS_Form1.chk2_AllParts.Caption("All Parts")
+gui.SS_Form1.chk2_AllParts.visible(True)
+gui.SS_Form1.chk2_AllParts.size(1800,300)
+gui.SS_Form1.chk2_AllParts.position(100,1300)
+gui.SS_Form1.chk2_AllParts.enabled(True)
+gui.SS_Form1.chk2_AllParts.fontname("Arial")
+gui.SS_Form1.chk2_AllParts.fontsize(8)
+gui.SS_Form1.chk2_AllParts.setinternationalid(21300)
+gui.SS_Form1.chk2_AllParts.event(click,chk2_allparts_click)
+gui.SS_Form1.lvw2_Parts.create(listview)
+gui.SS_Form1.lvw2_Parts.view(3)
+gui.SS_Form1.lvw2_Parts.visible(True)
+gui.SS_Form1.lvw2_Parts.size(5810,2000)
+gui.SS_Form1.lvw2_Parts.position(100,1850)
+gui.SS_Form1.lvw2_Parts.enabled(True)
+gui.SS_Form1.lvw2_Parts.fontname("Arial")
+gui.SS_Form1.lvw2_Parts.fontsize(8)
+gui.SS_Form1.lvw2_Parts.addlistviewcolumn(variable.Translation.62400,2705,0)
+gui.SS_Form1.lvw2_Parts.addlistviewcolumn(variable.Translation.215002,2705,0)
+Gui.SS_Form1.cmd_lvw2_PartsAdd.create(button)
+gui.SS_Form1.cmd_lvw2_PartsAdd.Caption("Add")
+gui.SS_Form1.cmd_lvw2_PartsAdd.visible(True)
+gui.SS_Form1.cmd_lvw2_PartsAdd.size(1000,330)
+gui.SS_Form1.cmd_lvw2_PartsAdd.position(4810,965)
+gui.SS_Form1.cmd_lvw2_PartsAdd.enabled(True)
+gui.SS_Form1.cmd_lvw2_PartsAdd.fontname("Arial")
+gui.SS_Form1.cmd_lvw2_PartsAdd.fontsize(8)
+gui.SS_Form1.cmd_lvw2_PartsAdd.setinternationalid(7600)
+gui.SS_Form1.cmd_lvw2_Partsadd.event(click,cmd_lvw2_partsadd_click)
+Gui.SS_Form1.cmd_lvw2_PartsDelete.create(button)
+gui.SS_Form1.cmd_lvw2_PartsDelete.Caption("Delete")
+gui.SS_Form1.cmd_lvw2_PartsDelete.visible(True)
+gui.SS_Form1.cmd_lvw2_PartsDelete.size(1000,330)
+gui.SS_Form1.cmd_lvw2_PartsDelete.position(100,3935)
+gui.SS_Form1.cmd_lvw2_PartsDelete.enabled(True)
+gui.SS_Form1.cmd_lvw2_PartsDelete.fontname("Arial")
+gui.SS_Form1.cmd_lvw2_PartsDelete.fontsize(8)
+gui.SS_Form1.cmd_lvw2_PartsDelete.setinternationalid(171500)
+gui.SS_Form1.cmd_lvw2_Partsdelete.event(click,cmd_lvw2_partsdelete_click)
+Gui.SS_Form1.cmd_lvw2_PartsClear.create(button)
+gui.SS_Form1.cmd_lvw2_PartsClear.Caption("Clear")
+gui.SS_Form1.cmd_lvw2_PartsClear.visible(True)
+gui.SS_Form1.cmd_lvw2_PartsClear.size(1000,330)
+gui.SS_Form1.cmd_lvw2_PartsClear.position(1185,3935)
+gui.SS_Form1.cmd_lvw2_PartsClear.enabled(True)
+gui.SS_Form1.cmd_lvw2_PartsClear.fontname("Arial")
+gui.SS_Form1.cmd_lvw2_PartsClear.fontsize(8)
+gui.SS_Form1.cmd_lvw2_PartsClear.setinternationalid(106700)
+gui.SS_Form1.cmd_lvw2_Partsclear.event(click,cmd_lvw2_partsclear_click)
+gui.SS_Form1.chk1_InclZeroOnHand.create(checkbox)
+gui.SS_Form1.chk1_InclZeroOnHand.Caption("Include Zero On Hand")
+gui.SS_Form1.chk1_InclZeroOnHand.visible(True)
+gui.SS_Form1.chk1_InclZeroOnHand.size(3600,300)
+gui.SS_Form1.chk1_InclZeroOnHand.position(100,4465)
+gui.SS_Form1.chk1_InclZeroOnHand.enabled(True)
+gui.SS_Form1.chk1_InclZeroOnHand.fontname("Arial")
+gui.SS_Form1.chk1_InclZeroOnHand.fontsize(8)
+gui.SS_Form1.chk1_InclZeroOnHand.setinternationalid(336401)
+gui.SS_Form1.cmd1_Print.create(button)
+gui.SS_Form1.cmd1_Print.Caption("Print")
+gui.SS_Form1.cmd1_Print.visible(True)
+gui.SS_Form1.cmd1_Print.size(1000,360)
+gui.SS_Form1.cmd1_Print.position(100,4850)
+gui.SS_Form1.cmd1_Print.enabled(True)
+gui.SS_Form1.cmd1_Print.fontname("Arial")
+gui.SS_Form1.cmd1_Print.fontsize(8)
+gui.SS_Form1.cmd1_Print.setinternationalid(452800)
+gui.SS_Form1.cmd1_Print.event(click,cmd1_print_click)
+gui.SS_Form1.dtp1_Cutoff.tabstop(true)
+gui.SS_Form1.dtp1_Cutoff.tabindex(1)
+gui.SS_Form1.txt1_BegPart.tabstop(true)
+gui.SS_Form1.txt1_BegPart.tabindex(2)
+gui.SS_Form1.cmd_txt1_BegPart.tabstop(true)
+gui.SS_Form1.cmd_txt1_BegPart.tabindex(3)
+gui.SS_Form1.txt2_EndPart.tabstop(true)
+gui.SS_Form1.txt2_EndPart.tabindex(4)
+gui.SS_Form1.cmd_txt2_EndPart.tabstop(true)
+gui.SS_Form1.cmd_txt2_EndPart.tabindex(5)
+gui.SS_Form1.cmd_lvw2_PartsAdd.tabstop(true)
+gui.SS_Form1.cmd_lvw2_PartsAdd.tabindex(6)
+gui.SS_Form1.chk2_AllParts.tabstop(true)
+gui.SS_Form1.chk2_AllParts.tabindex(7)
+gui.SS_Form1.chk1_InclZeroOnHand.tabstop(true)
+gui.SS_Form1.chk1_InclZeroOnHand.tabindex(8)
+gui.SS_Form1.cmd1_Print.tabstop(true)
+gui.SS_Form1.cmd1_Print.tabindex(9)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.uPart.Define("sPart",String,"PART")
+Variable.UDT.uPart.Define("sLocation",String,"LOCN")
+Variable.UDT.uPart.Define("sProdlne",String,"PROD_LINE")
+Variable.UDT.uPart.Define("sDescription",String,"DESCR")
+Variable.UDT.uPart.Define("sUM_Inventory",String,"UM_INV")
+Variable.UDT.uPart.Define("fAmt_Cost",Float,"COST")
+Variable.UDT.uPart.Define("fQty_Onhand",Float,"QTY_ONHAND")
+Variable.UDT.uPart.Define("fTotal_Usage",Float,"TOT_USAGE")
+Variable.UDT.uPart.Define("iBIRunID",Long,"RUNID")
+Variable.UDT.uPart.Define("dHist_Date",Date,"HIST_DATE")
+Variable.UDT.uPart.Define("sDate_Action_Flag",String,"DATE_ACTION_FLAG")
+Variable.UDT.uPart.Define("fMatlCost",Float,"MATL_COST")
+Variable.UDT.uPart.Define("fLabrCost",Float,"LABR_COST")
+Variable.UDT.uPart.Define("fOvhdCost",Float,"OVHD_COST")
+Variable.UDT.uPart.Define("fOutCost",Float,"OUTS_COST")
+Variable.UDT.uPart.Define("fFreightCost",Float,"FREIGHT_COST")
+Variable.UDT.uPart.Define("fOtherCost",Float,"OTHER_COST")
+Variable.uGlobal.uPart.Declare("uPart")
+
+Variable.Global.iKey.Declare(Long,0)
+
+
+
+Variable.Global.iBIRunID.Declare(Long,-1)
+Variable.Global.iBILogID.Declare(Long,-1)
+Variable.UDT.uPurchase.Define("dDate",Date,Pur_Date)
+Variable.UDT.uPurchase.Define("iQty",Float,Pur_Qty)
+Variable.UDT.uPurchase.Define("sLoc",String,Loc)
+Variable.UDT.uPurchase.Define("sPart",String,Part)
+Variable.UDT.uPurchase.Define("Terminal",String,Terminal)
+Variable.uGlobal.uPurchase.Declare("uPurchase")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+' AGM 12/11/2014 Applied new callwrapper 7111
+'This Inventory Status Part with Cutoff Date will replace the Extended Status by Part with Cutoff Date
+
+'open connection
+F.ODBC.connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.puser,V.Ambient.PPass,3000)
+gui.SS_Form1..applytranslation
+Gui.SS_Form1.lvw2_Parts.ClearItems
+
+Gui.SS_Form1..show
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+Program.Sub.cmd1_Print_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmd1_Print_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sSql.Declare(String)
+V.Local.srows.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.iOrd.Declare(Long)
+V.Local.iPurQty.Declare(Float)
+V.Local.sPartRange.Declare(String)
+V.Local.sPartRangeFile.Declare(String)
+V.Local.sPartRangeFileFQP.Declare(String)
+V.Local.sPartRangeFileString.Declare(String)
+V.Local.sRangePad1.Declare(String)
+V.Local.sRangePad2.Declare(String)
+V.Local.sParams.Declare(String)
+V.Local.sCutOffDate.Declare(String)
+V.Local.sPurDate.Declare(Date)
+
+Gui.SS_Form1..Visible(False)
+
+F.Global.BI.GetRunID(V.Global.iBIRunID)
+F.Intrinsic.Control.If(V.Ambient.IsInIDE,=,True)
+        F.Global.BI.StartLogging(V.global.iBIRunID,2555,0,"",V.global.iBILogID)
+F.Intrinsic.Control.Else
+        F.Global.BI.StartLogging(V.global.iBIRunID,-1,-1,"",V.global.iBILogID)
+F.Intrinsic.Control.EndIf
+
+V.uGlobal.uPart.Redim(-1,-1)
+V.uGlobal.uParth.Redim(-1,-1)
+
+
+Gui.SS_Form1.lvw2_Parts.RetrieveAllListItems(V.Local.srows)
+F.Intrinsic.Control.If(V.local.srows,<>,"***NORETURN***")
+	'Setting filename of range file for parts
+	F.Intrinsic.String.Build("{0}{1}",V.Global.iBIRunID.String,"INV304P",V.Local.sPartRangeFile)
+	F.Intrinsic.String.Build("{0}\{1}{2}",V.Caller.LocalGSSTempDir,V.Global.iBIRunID.String,"INV304P",V.Local.sPartRangeFileFQP)
+
+	F.Intrinsic.String.Split(V.Local.srows,"*!*",V.Local.srows)
+	F.Intrinsic.Control.For(V.Local.i,0,V.Local.srows.UBound,1)
+		Gui.SS_Form1.lvw2_Parts.RetrieveItemOrdinal(V.local.srows(v.local.i),V.local.iord)
+		V.Local.sPartRange.Set(V.Screen.SS_Form1!lvw2_Parts.ListItemTextExtended(v.Local.iord))
+		'Putting together string of ranges selected to be used to create range file for CORE
+		F.Intrinsic.String.Split(V.Local.sPartRange,"*!*",V.Local.sPartRange)
+		F.Intrinsic.String.RPad(V.Local.sPartRange(0)," ",38,V.Local.sRangePad1)
+		F.Intrinsic.String.RPad(V.Local.sPartRange(1)," ",38,V.Local.sRangePad2)
+		F.Intrinsic.Control.If(V.Local.sPartRangeFileString,=,"")
+			F.Intrinsic.String.Build("{0}{1}",V.Local.sRangePad1,V.Local.sRangePad2,V.Local.sPartRangeFileString)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Concat(V.Local.sPartRangeFileString,V.Ambient.NewLine,V.Local.sRangePad1,V.Local.sRangePad2,V.Local.sPartRangeFileString)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.i)
+
+	'Writing out range file for core
+	F.Intrinsic.File.String2File(V.Local.sPartRangeFileFQP,V.Local.sPartRangeFileString)
+F.Intrinsic.Control.EndIf
+
+'If no criteria returned at all print nothing and exit program
+F.Intrinsic.Control.If(V.Local.srows,=,"***NORETURN***")
+F.Intrinsic.Control.AndIf(V.Screen.SS_Form1!chk2_AllParts.Value,=,0)
+	F.Intrinsic.Control.CallSub(Callbi)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+F.Intrinsic.Control.EndIf
+
+'Forming paramters for callwrapper Mode:7111:  RunID, Cutoff Date(ccyymmdd), All Parts Flag(0 or 1), Part Range File Name
+F.Intrinsic.String.Format(V.Screen.SS_Form1!dtp1_Cutoff.Value,"yyyymmdd",V.Local.sCutOffDate)
+F.Intrinsic.String.Build("{0}!*!{1}!*!{2}!*!{3}!*!*!*ZDR*!*!*!!*!!*!",V.Global.iBIRunID,V.Local.sCutOffDate,V.Screen.SS_Form1!chk2_AllParts.Value,V.Local.sPartRangeFile,V.Local.sParams)
+
+'Calling callwrapper to build Y tables
+F.Global.General.CallWrapperSync(7111,V.Local.sParams)
+
+'Selecting data from Y tables
+F.Intrinsic.String.Build("Select RUNID, PART, LOCN, PROD_LINE, DESCR, UM_INV, COST, QTY_ONHAND, TOT_USAGE, MATL_COST, LABR_COST, OVHD_COST, OUTS_COST, FREIGHT_COST, OTHER_COST, HIST_DATE, DATE_ACTION_FLAG From Y_IV_XSTAT_CUTOFF where RUNID = {0} Order By PROD_LINE",V.Global.iBIRunID,V.Local.sSQL)
+
+F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","V.uGlobal.uPart",True,0)
+F.ODBC.conx!rst.Close
+
+'Checking to see user wants zero on hand records or not
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chk1_InclZeroOnHand.Value,=,0)
+	F.Intrinsic.Variable.UDTMultiFlag(V.uGlobal.uPart!fQty_Onhand,0)
+	F.Intrinsic.Variable.UDTDeleteFlagged(V.uGlobal.uPart)
+F.Intrinsic.Control.EndIf
+
+'open Z table
+F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst","Z_IV_Xstat_Cutoff")
+	F.Intrinsic.Control.If(V.uglobal.upart.Ubound,<>,-1)
+		F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uPart!iBIRunID,"BIRunID")
+		F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uPart!sProdlne,"PRODUCT_LINE")
+		F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uPart!sLocation,"LOCATION")
+		F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uPart!sDescription,"DESCRIPTION")
+		F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uPart!sUM_Inventory,"UM_INVENTORY")
+		F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uPart!fAmt_Cost,"AMT_COST")
+		F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uPart!fTotal_Usage,"TOTAL_USAGE")
+		F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uPart!dHist_Date,"HISTORY_DATE")
+		F.Intrinsic.Variable.saveudttorecordset("conx","rst","v.uglobal.upart",True)
+	F.Intrinsic.Control.EndIf
+F.ODBC.conx!rst.Close
+
+'Get Purchase Qty & Purchase Date
+V.uGlobal.uPurchase.Redim(0,V.uGlobal.uPart.UBound)
+F.Intrinsic.Control.For(V.Local.i,0,V.uGlobal.uPart.UBound,1)
+	F.Intrinsic.String.Build("Select v_PO_Header.Date_Order from v_Po_LInes Join v_PO_Header on v_Po_Lines.Purchase_Order = v_Po_Header.Purchase_Order Where Flag_Recv_Close = 'Y' and Part = '{0}' and Location = '{1}' Order by v_Po_Header.Date_Order Desc",V.uGlobal.uPart(v.Local.i)!sPart,V.uGlobal.uPart(v.Local.i)!sLocation,V.Local.sSql)
+	F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+
+	F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,False)
+		V.Local.sPurDate.Set(V.ODBC.conx!rst.FieldVal!Date_Order)
+		F.Intrinsic.String.Build("Select Sum (v_PO_Lines.Qty_Received) as Qty_Received from v_Po_LInes Join v_PO_Header on v_Po_Lines.Purchase_Order = v_Po_Header.Purchase_Order Where Flag_Recv_Close = 'Y' and v_PO_Lines.Part = '{0}' and v_Po_Lines.Location = '{1}' and v_PO_Header.Date_Order = '{2}'",V.uGlobal.uPart(v.Local.i)!sPart,V.uGlobal.uPart(v.Local.i)!sLocation,V.Local.sPurDate.PervasiveDate,V.Local.sSql)
+		F.ODBC.Connection!conx.OpenLocalRecordsetRO("rstQty",V.Local.sSql)
+		V.Local.iPurQty.Set(V.ODBC.conx!rstQty.FieldValFloat!Qty_Received)
+		V.uGlobal.uPurchase(v.Local.i)!dDate.Set(V.Local.sPurDate)
+		F.ODBC.conx!rstQty.Close
+	F.Intrinsic.Control.Else
+		V.Local.iPurQty.Set(0)
+	F.Intrinsic.Control.EndIf
+
+	V.uGlobal.uPurchase(v.Local.i)!sPart.Set(V.uGlobal.uPart(v.Local.i)!sPart)
+	V.uGlobal.uPurchase(v.Local.i)!sLoc.Set(V.uGlobal.uPart(v.Local.i)!sLocation)
+	V.uGlobal.uPurchase(v.Local.i)!iQty.Set(V.Local.iPurQty)
+
+	F.ODBC.conx!rst.Close
+F.Intrinsic.Control.Next(V.Local.i)
+
+F.Intrinsic.Variable.UDTSetMemberValue(V.uGlobal.uPurchase!Terminal,V.Caller.Terminal)
+
+F.Intrinsic.String.Build("Delete From GCG_3951_Part_Cutoff where Terminal = '{0}'",V.Caller.Terminal,V.Local.sSql)
+F.ODBC.Connection!conx.Execute(V.Local.sSql)
+
+F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst","Select * from GCG_3951_Part_Cutoff")
+F.Intrinsic.Variable.SaveUDTToRecordSet("conx","rst","V.uGlobal.uPurchase")
+F.ODBC.conx!rst.Close
+
+
+'Deleting Y table
+F.Intrinsic.String.Build("Delete Y_IV_XSTAT_CUTOFF Where RUNID = {0}",V.Global.iBIRunID.String,V.Local.sSql)
+F.ODBC.Connection!conx.Execute(V.Local.sSql)
+
+F.Global.BI.StopLogging(V.Global.iBILogID)
+F.Intrinsic.Control.CallSub(Callbi)
+F.Intrinsic.Control.CallSub(Ss_form1_unload)
+
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd1_Print_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmd1_Print_click.End
+
+program.sub.ss_form1_unload.start
+F.Intrinsic.Control.SetErrorHandler("ss_form1_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+F.ODBC.Connection!conx.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ss_form1_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.ss_form1_unload.end
+
+Program.Sub.Callbi.Start
+F.Intrinsic.Control.SetErrorHandler("Callbi_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+V.Local.sParams.Declare(String)
+V.Local.sValues.Declare(String)
+V.local.iret.declare(Long)
+
+V.Local.sParams.set("PRINT_ALL*!*Cutoff")
+F.Intrinsic.string.concat(V.Screen.SS_Form1!chk2_AllParts.Value,"*!*",V.screen.SS_Form1!dtp1_Cutoff.value,V.Local.svalues)
+
+F.Global.BI.RunReportPreProcessor(V.Global.iBIRunID,V.Global.iBILogID,V.Local.sParams,V.Local.sValues,"",-1,True,"",-1,"",-1,"","",V.Local.iret)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Callbi_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Callbi.End
+
+program.sub.txt1_begpart_gotfocus.start
+F.Intrinsic.Control.SetErrorHandler("txt1_begpart_gotfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+Gui.SS_Form1.txt1_BegPart.SelectAll
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txt1_begpart_gotfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.txt1_begpart_gotfocus.end
+
+program.sub.txt1_begpart_lostfocus.start
+F.Intrinsic.Control.SetErrorHandler("txt1_begpart_lostfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+Gui.SS_Form1.txt2_EndPart.Text(V.Screen.SS_Form1!txt1_BegPart.Text)
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txt1_begpart_lostfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.txt1_begpart_lostfocus.end
+
+program.sub.txt2_endpart_gotfocus.start
+F.Intrinsic.Control.SetErrorHandler("txt2_endpart_gotfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+Gui.SS_Form1.txt2_EndPart.SelectAll
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txt2_endpart_gotfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.txt2_endpart_gotfocus.end
+
+program.sub.cmd_txt1_begpart_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txt1_begpart_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+
+F.Intrinsic.UI.Browser(105,"",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.ss_form1.txt1_begpart.Text(V.Local.sRet.Trim)
+	Gui.SS_Form1.txt2_Endpart.Text(V.Screen.SS_Form1!txt1_Begpart.Text)
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txt1_begpart_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_txt1_begpart_click.end
+
+program.sub.cmd_txt2_endpart_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txt2_endpart_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+
+F.Intrinsic.UI.Browser(105,"",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.ss_form1.txt2_endpart.Text(V.Local.sRet.Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txt2_endpart_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_txt2_endpart_click.end
+
+program.sub.cmd_lvw2_partsadd_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw2_partsadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sTxtChk.Declare(String)
+
+'Making sure beginning part is not blank or space
+V.Local.sTxtChk.Set(V.Screen.SS_Form1!txt1_BegPart.Text)
+F.Intrinsic.Control.If(V.Local.sTxtChk.Trim,=,"")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'Making sure ending part is not blank or space
+V.Local.sTxtChk.Set(V.Screen.SS_Form1!txt2_EndPart.Text)
+F.Intrinsic.Control.If(V.Local.sTxtChk.Trim,=,"")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Math.Add(V.global.iKey,1,V.global.iKey)
+Gui.SS_Form1.lvw2_parts.AddListItem(V.global.iKey,V.Screen.SS_Form1!txt1_Begpart.Text)
+Gui.SS_Form1.lvw2_parts.SetListItemSubItemText(V.global.iKey,1,V.Screen.SS_Form1!txt2_Endpart.Text)
+Gui.SS_Form1.txt1_Begpart.Text("")
+Gui.SS_Form1.txt2_Endpart.Text("")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw2_partsadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_lvw2_partsadd_click.end
+
+program.sub.cmd_lvw2_partsdelete_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw2_partsdelete_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.iKey.Declare(Long)
+
+V.Local.iKey.Set(V.Screen.SS_Form1!lvw2_Parts.SelectedItemKey)
+Gui.SS_Form1.lvw2_Parts.removeitem(V.Local.iKey)
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw2_partsdelete_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_lvw2_partsdelete_click.end
+
+program.sub.cmd_lvw2_partsclear_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw2_partsclear_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form1.lvw2_Parts.ClearItems
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw2_partsclear_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_lvw2_partsclear_click.end
+
+program.sub.chk2_allparts_click.start
+F.Intrinsic.Control.SetErrorHandler("chk2_allparts_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chk2_AllParts.Value,=,1)
+	'disable entry of product line range
+	Gui.SS_Form1.txt1_BegPart.Enabled(false)
+	Gui.SS_Form1.txt2_EndPart.Enabled(false)
+	Gui.SS_Form1.cmd_txt1_BegPart.Enabled(false)
+	Gui.SS_Form1.cmd_txt2_EndPart.Enabled(false)
+	Gui.ss_form1.cmd_lvw2_partsadd.Enabled(false)
+	Gui.ss_form1.cmd_lvw2_partsclear.Enabled(false)
+	Gui.ss_form1.cmd_lvw2_partsdelete.Enabled(false)
+	Gui.SS_Form1.txt1_BegPart.Text("")
+	Gui.SS_Form1.txt2_EndPart.Text("")
+	Gui.SS_Form1.lvw2_parts.ClearItems
+F.Intrinsic.control.Else
+	'enable entry of product line range
+	Gui.SS_Form1.txt1_Begpart.Enabled(true)
+	Gui.SS_Form1.txt2_Endpart.Enabled(true)
+	Gui.SS_Form1.cmd_txt1_Begpart.Enabled(true)
+	Gui.SS_Form1.cmd_txt2_Endpart.Enabled(true)
+	Gui.ss_form1.cmd_lvw2_partsadd.Enabled(true)
+	Gui.ss_form1.cmd_lvw2_partsclear.Enabled(true)
+	Gui.ss_form1.cmd_lvw2_partsdelete.Enabled(true)
+	Gui.SS_Form1.lvw2_parts.ClearItems
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("chk2_allparts_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3951_IV_XStat_Cutoff_Date_Part.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.chk2_allparts_click.end
+
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Extended Status Part with Cutoff Date
+SS_Form1.CTRL{{NAME::dtp1_Cutoff\\TYPE::6\\CAPTION::Cutoff Date\\TABSTOP::1\\GROUP::-1\\BROWSER::0\\INTL::156600\\SIZE::1
+SS_Form1.CTRL{{NAME::txt1_BegPart\\TYPE::2\\CAPTION::Beginning Part Number\\RANGE::lvw2_Parts\\TABSTOP::2\\GROUP::2\\BROWSER::1\\INTL::62400\\SIZE::1
+SS_Form1.CTRL{{NAME::txt2_EndPart\\TYPE::2\\CAPTION::Ending Part Number\\RANGE::lvw2_Parts\\TABSTOP::3\\GROUP::2\\BROWSER::1\\INTL::215002\\SIZE::1
+SS_Form1.CTRL{{NAME::chk2_AllParts\\TYPE::9\\CAPTION::All Parts\\TABSTOP::4\\GROUP::-1\\SUBGROUP::1\\BROWSER::0\\INTL::21300\\SIZE::1
+SS_Form1.CTRL{{NAME::lvw2_Parts\\TYPE::7\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::chk1_InclZeroOnHand\\TYPE::9\\CAPTION::Include Zero On Hand\\TABSTOP::5\\GROUP::-1\\BROWSER::0\\INTL::336401\\SIZE::2
+SS_Form1.CTRL{{NAME::cmd1_Print\\TYPE::5\\CAPTION::Print\\TABSTOP::6\\GROUP::-1\\BROWSER::0\\INTL::452800\\SIZE::1
+
+Program.Sub.ScreenSS.End
+Program.Sub.Comments.Start
+${$0$}$BIR_IV_XStat_Cutoff_Date_Part$}$Mitch$}$3/7/2014
+${$3$}$0$}$$}$-1$}$-1$}$$}$1/1/1900$}$Report ID: 2555, IV_XStat_Cutoff_Date_2555.rpt
+Spec: 572
+Program.Sub.Comments.End
+
